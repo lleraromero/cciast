@@ -207,7 +207,7 @@ namespace Microsoft.Cci.MutableContracts {
       /// </summary>
       public override IStatement Rewrite(IAssertStatement assertStatement) {
         var methodCall = new MethodCall() {
-          Arguments = new List<IExpression> { assertStatement.Condition, },
+          Arguments = new List<IExpression> { Rewrite(assertStatement.Condition), },
           IsStaticCall = true,
           MethodToCall = this.contractProvider.ContractMethods.Assert,
           Type = systemVoid,
@@ -224,7 +224,7 @@ namespace Microsoft.Cci.MutableContracts {
       /// </summary>
       public override IStatement Rewrite(IAssumeStatement assumeStatement) {
         var methodCall = new MethodCall() {
-          Arguments = new List<IExpression> { assumeStatement.Condition, },
+          Arguments = new List<IExpression> { Rewrite(assumeStatement.Condition), },
           IsStaticCall = true,
           MethodToCall = this.contractProvider.ContractMethods.Assume,
           Type = systemVoid,
